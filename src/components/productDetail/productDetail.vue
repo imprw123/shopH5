@@ -1,6 +1,6 @@
 <template>
   <transition name="bounce">
-    <div class="boxDetail"  ref="food">
+    <div class="boxDetail" ref="food">
       <div class="detail">
         <div class="food-content">
           <div class="imgShow">
@@ -41,45 +41,60 @@
                       <b>81800</b>通宝/永久
                     </div>
                   </div>
-                  <button class="ljgm">立即购买</button>
                 </div>
+              </div>
+              <div class="payButton">
+                <button class="sendFriend">赠送好友</button>
+                <button class="ljgm" @click="MadeTrue">立即购买</button>
               </div>
             </div>
             <!-- 猜你喜欢 -->
           </div>
         </div>
       </div>
+      <shopCar v-bind:showPay="payFlag" v-on:madefalse="MadeFalse"></shopCar>
     </div>
   </transition>
+  
 </template>
 
 
 <script>
+import shopCar from "../shopCar/shopCar.vue";
 import BScroll from "better-scroll";
 export default {
   props: ["showFlag"],
   data() {
     return {
-      Flag: this.showFlag
+      Flag: this.showFlag,
+       payFlag: false
     };
   },
   mounted() {
-       this.$nextTick(() => {
-         if (!this.foodScroll) {
-           this.foodScroll = new BScroll(this.$refs.food, {
-             click: true
-           })
-         } else {
-           this.foodScroll.refresh()
-         }
-
+    this.$nextTick(() => {
+      if (!this.foodScroll) {
+        this.foodScroll = new BScroll(this.$refs.food, {
+          click: true
+        });
+      } else {
+        this.foodScroll.refresh();
+      }
     });
   },
   methods: {
     hideFood() {
       this.$emit("closeModel", false);
+    },
+     MadeTrue() {
+      this.payFlag = true;
+    },
+    MadeFalse() {
+      this.payFlag = false;
     }
-  }
+  },
+  components: {
+    shopCar
+  },
 };
 </script>
 
@@ -129,7 +144,7 @@ export default {
 }
 .icon-close {
   display: inline-block;
-  padding: 0.1rem;
+  padding: 0.2rem;
   color: #fff;
   font-size: 0.6rem;
   position: absolute;
@@ -155,5 +170,27 @@ export default {
 .yj-price {
   font-size: 0.2rem;
   color: #fff;
+}
+.payButton {
+  display: flex;
+  overflow: hidden;
+  zoom: 1;
+}
+.payButton button {
+  flex: 1;
+  font-size: 0.26rem;
+  height: 0.8rem;
+}
+.payButton button.sendFriend {
+  background-color: #2bb8aa;
+  border: 0.05rem solid #10a495;
+  color: #fff;
+  font-family: "微软雅黑";
+}
+.payButton button.ljgm {
+  background-color: #ff6633;
+  border: 0.05rem solid #ea450e;
+  color: #fff;
+  font-family: "微软雅黑";
 }
 </style>

@@ -102,6 +102,7 @@
                     </div>
                     <!-- 支付宝 -->
 
+                    <button class="payforNumber">去支付</button>
                   </div>
                 </div>
               </div>
@@ -127,8 +128,7 @@ export default {
       flod: this.showPay
     };
   },
-  mounted() {
-  },
+  mounted() {},
   computed: {
     cartShow() {
       return this.showPay;
@@ -232,7 +232,6 @@ export default {
   opacity: 0;
 }
 .shopcart .list-content {
-
   overflow: hidden;
   font-size: 0.3rem;
   font-family: "微软雅黑";
@@ -251,18 +250,18 @@ export default {
   border-bottom: 0.01rem solid #4b4b58;
   background-color: #4a4a67;
   padding: 0 0.18rem;
-  height:1rem;
+  height: 1rem;
   line-height: 1rem;
 }
 .BalanceIcon {
-  width:  0.5rem;
-  height:  0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
   display: inline-block;
   position: relative;
   top: 0.16rem;
 }
 .BalanceIcon img {
-  width:  0.5rem;
+  width: 0.5rem;
   height: 0.5rem;
 }
 .inputBox {
@@ -286,6 +285,17 @@ export default {
 }
 .lastMoney {
   margin-left: 0.15rem;
+}
+.payforNumber {
+  width:100%;
+  display:block;
+  height: 1rem;
+  line-height:1rem;
+  color: #fff;
+  background-color: #4391f5;
+  border: 0.01rem solid #3064a7;
+  font-size: 0.3rem;
+  font-family: '微软雅黑';
 }
 </style>
 
